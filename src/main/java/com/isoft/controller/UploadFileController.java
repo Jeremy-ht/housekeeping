@@ -25,10 +25,10 @@ public class UploadFileController {
     public ResponseData fileUpdata(MultipartFile file) {
 
         // 配置文件注入
-        String endpoint = "oss-cn-beijing.aliyuncs.com";
-        String accessKeyId = "LTAI4G4mcSYw1mGMaVRgAKAP";
-        String accessKeySecret = "tMfwwIc5ejxnDPpPhAfuM3GztZpSSc";
-        String bucketName = "common-tr";
+        String endpoint = "";
+        String accessKeyId = "";
+        String accessKeySecret = "";
+        String bucketName = "";
 
         try {
             // 获取上传名称

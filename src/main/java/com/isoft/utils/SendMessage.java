@@ -14,8 +14,8 @@ import com.aliyuncs.profile.DefaultProfile;
  */
 public class SendMessage {
     public static String send(String phone) {
-        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI4FtGxtVnUgLkq3aQubck",
-                "T7clyfq6jSUHTCm9ysmC2Qf9Mn5Y8x");
+        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "",
+                "");
         IAcsClient client = new DefaultAcsClient(profile);
 
         CommonRequest request = new CommonRequest();
