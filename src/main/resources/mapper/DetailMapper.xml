@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.isoft.dao.DetailMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.isoft.pojo.entity.Detail">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="introduction" property="introduction"/>
+        <result column="gopath" property="gopath"/>
+        <result column="feature" property="feature"/>
+        <result column="categoryid" property="categoryid"/>
+        <result column="draft" property="draft"/>
+        <result column="cover" property="cover"/>
+        <result column="top" property="top"/>
+        <result column="creator" property="creator"/>
+        <result column="state" property="state"/>
+        <result column="releasetime" property="releasetime"/>
+        <result column="pay" property="pay"/>
+        <result column="opentime" property="opentime"/>
+        <result column="creatime" property="creatime"/>
+        <result column="phone" property="phone"/>
+        <result column="indextop" property="indextop"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, title, introduction, gopath, feature, categoryid, draft, cover, image, creatorid, state, releasetime, creatime
+    </sql>
+
+    <select id="getSceneryList" resultType="com.isoft.pojo.vo.DetailVo">
+        SELECT
+        d.*,
+        c.categoryname,
+        a.username
+        FROM
+        scenery_detail d
+        LEFT JOIN scenery_category c ON d.categoryid = c.categoryid
+        LEFT JOIN scenery_admin a ON a.id = d.creator
+        <where>
+            <if test="categoryId != 0">
+                and d.categoryid = #{categoryId}
+            </if>
+            and d.state = 1
+            <if test="creator != 0">
+                and d.creator = #{creator}
+            </if>
+            <if test="draft != 2">
+                and d.draft = #{draft}
+            </if>
+        </where>
+        ORDER BY
+        d.releasetime DESC
+    </select>
+
+
+    <select id="getSceneryInfo" resultType="com.isoft.pojo.vo.DetailVo">
+        SELECT
+            d.*,
+            c.categoryname,
+            a.username
+        FROM
+            scenery_detail d
+            LEFT JOIN scenery_category c ON d.categoryid = c.categoryid
+            LEFT JOIN scenery_admin a ON a.id = d.creator
+        WHERE
+            d.id = #{id}
+            and d.state = 1
+            and d.draft = 1
+    </select>
+
+
+    <select id="getSearchContent" resultType="com.isoft.pojo.entity.Detail">
+        SELECT
+            d.*
+        FROM
+            scenery_detail d
+        WHERE
+            d.title LIKE concat( '%', #{content}, '%' )
+            OR d.gopath LIKE concat( '%',  #{content}, '%' )
+            OR d.feature LIKE concat( '%',  #{content}, '%' )
+            OR d.introduction LIKE concat( '%',	 #{content}, '%')
+    </select>
+
+
+    <select id="getEchartsCategory" resultType="com.isoft.pojo.vo.EchartsVo">
+        SELECT
+            t.n name,
+            count( d.id ) value
+        FROM
+            ( SELECT DISTINCT categoryid c, categoryname n FROM scenery_category ) t
+            LEFT JOIN scenery_detail d ON t.c = d.categoryid
+        GROUP BY
+            t.n
+    </select>
+
+    <select id="getEchartsUser" resultType="com.isoft.pojo.vo.EchartsVo">
+        SELECT
+            t.monthNo AS name,
+            COUNT( 1 ) AS value
+        FROM
+            (
+            SELECT
+                MONTH ( a.creatime ) AS monthNo,
+                YEAR ( a.creatime ) AS myYear,
+                a.id AS id
+            FROM
+                scenery_user a
+            ) AS t
+        WHERE
+            t.myYear = #{date}
+        GROUP BY
+            t.monthNo
+    </select>
+
+
+</mapper>
