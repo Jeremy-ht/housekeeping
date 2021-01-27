@@ -20,6 +20,8 @@
         <result column="creatime" property="creatime" />
         <result column="state" property="state" />
         <result column="creator" property="creator" />
+        <result column="image" property="image" />
+        <result column="categoryid" property="categoryid" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
@@ -33,9 +35,9 @@
             c.categoryname,
             a.username
         FROM
-            scenery_detail d
-            LEFT JOIN scenery_category c ON d.categoryid = c.categoryid
-            LEFT JOIN scenery_admin a ON a.id = d.creator
+            detail d
+            LEFT JOIN category c ON d.categoryid = c.categoryid
+            LEFT JOIN admin a ON a.id = d.creator
         WHERE
             d.id = #{id}
             and d.state = 1

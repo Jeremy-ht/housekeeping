@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  *  mp配置
  */
 @Configuration
-@MapperScan("com.isoft.scenery.dao")
+@MapperScan("com.isoft.dao")
 public class MPconfig {
 
     /**

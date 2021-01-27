@@ -28,10 +28,10 @@ public interface DetailMapper extends BaseMapper<Detail> {
 
     DetailVo getSceneryInfo(Integer id);
 
-    @Update("update scenery_detail set draft = 1 where id = #{id}")
+    @Update("update detail set draft = 1 where id = #{id}")
     int pullScenery(Integer id);
 
-    @Select("SELECT count(1) FROM scenery_detail WHERE releasetime >= CURDATE() and state = 1 and draft = 1")
+    @Select("SELECT count(1) FROM detail WHERE releasetime >= CURDATE() and state = 1 and draft = 1")
     int countDetail();
 
     List<Detail> getSearchContent(String content);

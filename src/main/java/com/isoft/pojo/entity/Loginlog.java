@@ -22,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("scenery_loginlog")
+@TableName("loginlog")
 public class Loginlog implements Serializable {
 
     private static final long serialVersionUID=1L;

@@ -22,8 +22,8 @@
         c.*,
         a.username
     FROM
-        scenery_category c
-        LEFT JOIN scenery_admin a ON a.id = c.creator
+        category c
+        LEFT JOIN admin a ON a.id = c.creator
     WHERE
         c.state = 1
     GROUP BY

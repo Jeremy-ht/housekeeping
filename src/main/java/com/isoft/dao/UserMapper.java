@@ -21,9 +21,9 @@ public interface UserMapper extends BaseMapper<User> {
     int updAbleUserById(@Param("id") int id,
                         @Param("state") Integer state);
 
-    @Select("SELECT count(1) FROM scenery_user WHERE creatime >= CURDATE() and (state = 1 or state = 2)")
+    @Select("SELECT count(1) FROM user WHERE creatime >= CURDATE() and (state = 1 or state = 2)")
     int countUser();
 
-    @Select("SELECT count(1) FROM scenery_user")
+    @Select("SELECT count(1) FROM user")
     int countUser2();
 }

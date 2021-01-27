@@ -22,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("scenery_comment")
+@TableName("comment")
 public class  Comment implements Serializable {
 
     private static final long serialVersionUID=1L;

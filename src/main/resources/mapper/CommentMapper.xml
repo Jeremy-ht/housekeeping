@@ -27,10 +27,10 @@
         ca.categoryname categoryname,
         d.title title
         FROM
-        scenery_comment c
-        LEFT JOIN scenery_user u ON u.id = c.userid
-        LEFT JOIN scenery_category ca ON ca.categoryid = c.categoryid
-        LEFT JOIN scenery_detail d on d.id = c.detailid
+        comment c
+        LEFT JOIN user u ON u.id = c.userid
+        LEFT JOIN category ca ON ca.categoryid = c.categoryid
+        LEFT JOIN detail d on d.id = c.detailid
         <where>
             c.state = 1
             <if test="detailId != 0">

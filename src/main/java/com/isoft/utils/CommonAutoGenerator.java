@@ -39,7 +39,7 @@ public class CommonAutoGenerator {
         stConfig.setCapitalMode(true)//全局大写命名
                 .setNaming(NamingStrategy.underline_to_camel)   //数据库表映射到实体的命名策略
                 .setInclude("info", "reservation", "skills")  //====需要生成的表====
-//                .setTablePrefix("scenery_")  //表前缀
+//                .setTablePrefix("")  //表前缀
                 .setEntityLombokModel(true);  //lombok
 
         //4.包名策略

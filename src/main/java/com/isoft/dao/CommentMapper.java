@@ -22,9 +22,9 @@ public interface CommentMapper extends BaseMapper<Comment> {
     Page<CommentVo> getCommentList(@Param("page") Page<CommentVo> page,
 								   @Param("detailId") Integer detailId);
 
-    @Update("update scenery_comment set state = #{state} where id = #{id}")
+    @Update("update comment set state = #{state} where id = #{id}")
     int updCommentState(Integer id, Integer state);
 
-    @Select("SELECT count(1) FROM scenery_comment WHERE creatime >= CURDATE() and state = 1")
+    @Select("SELECT count(1) FROM comment WHERE creatime >= CURDATE() and state = 1")
     int countComment();
 }
