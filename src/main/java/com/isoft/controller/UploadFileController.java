@@ -25,7 +25,7 @@ public class UploadFileController {
     public ResponseData fileUpdata(MultipartFile file) {
 
         // 配置文件注入
-        String endpoint = "";
+        String endpoint = "aaaaaa";
         String accessKeyId = "";
         String accessKeySecret = "";
         String bucketName = "";
