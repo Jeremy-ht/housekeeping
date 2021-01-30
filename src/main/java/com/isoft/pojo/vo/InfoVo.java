@@ -11,4 +11,7 @@ public class InfoVo extends Info {
 
 	private List<Skills> skillName;
 
+	private String categoryname;
+	private String username;
+
 }

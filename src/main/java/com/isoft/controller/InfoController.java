@@ -2,9 +2,11 @@ package com.isoft.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.isoft.pojo.entity.Detail;
 import com.isoft.pojo.entity.Info;
 import com.isoft.pojo.entity.Skills;
+import com.isoft.pojo.vo.DetailVo;
 import com.isoft.pojo.vo.InfoVo;
 import com.isoft.service.InfoService;
 import com.isoft.service.SkillsService;
@@ -71,6 +73,29 @@ public class InfoController {
 		map.put("info", info);
 		map.put("skillsname", skillsname);
 		return ResponseData.success().data(map);
+	}
+
+	/**
+	 *
+	 * @param pagenum
+	 * @param pagesize
+	 * @param id 分类id
+	 * @return
+	 */
+	@GetMapping("/getInfoList/{id}")
+	public ResponseData getInfoList(@RequestParam(name = "pagenum", defaultValue = "1", required = false) long pagenum,
+									   @RequestParam(name = "pagesize", defaultValue = "10", required = false) long pagesize,
+									   @PathVariable("id") Integer id) {
+
+		Page<InfoVo> page = infoService.getInfoList(pagenum, pagesize, id);
+		if (page != null) {
+			Map<String, Object> map = new HashMap<>();
+			map.put("total", page.getTotal());
+			map.put("data", page.getRecords());
+			return ResponseData.success().message("获取成功！").data(map);
+		}
+		return ResponseData.error().message("获取失败！");
+
 	}
 
 

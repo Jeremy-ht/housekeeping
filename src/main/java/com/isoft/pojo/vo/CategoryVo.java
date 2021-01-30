@@ -20,7 +20,7 @@ public class CategoryVo implements Serializable {
 
     private static final long serialVersionUID=1L;
 
-    private Integer categoryid;
+    private Integer id;
 
     private String categoryname;
 

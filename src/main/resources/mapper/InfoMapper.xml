@@ -22,6 +22,7 @@
         <result column="creator" property="creator" />
         <result column="image" property="image" />
         <result column="categoryid" property="categoryid" />
+        <result column="phone" property="phone" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
@@ -44,4 +45,22 @@
             and d.draft = 1
     </select>
 
+    <select id="getInfoList" resultType="com.isoft.pojo.vo.InfoVo">
+        SELECT
+        i.*,
+        c.categoryname categoryname,
+        a.username username
+        FROM
+        info i
+        LEFT JOIN category c ON i.categoryid = c.id
+        LEFT JOIN admin a ON a.id = i.creator
+        <where>
+            <if test="id != 0">
+                and i.categoryid = #{id}
+            </if>
+            and i.state = 1
+        </where>
+        ORDER BY
+        i.creatime DESC
+    </select>
 </mapper>
