@@ -9,22 +9,14 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- * <p>
- * 服务实现类
- * </p>
- *
- * @author ht
- * @since 2020-11-26
- */
 @Service
 public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> implements CommentService {
     @Autowired
     private CommentMapper commentMapper;
 
     @Override
-    public Page<CommentVo> getCommentList(Page<CommentVo> page, Integer detailId) {
-        Page<CommentVo> list = commentMapper.getCommentList(page, detailId);
+    public Page<CommentVo> getCommentList(Page<CommentVo> page, Integer infoid) {
+        Page<CommentVo> list = commentMapper.getCommentList(page, infoid);
         return list;
     }
 

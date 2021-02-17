@@ -4,17 +4,27 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.isoft.pojo.entity.Reservation">
-        <id column="id" property="id" />
-        <result column="userid" property="userid" />
-        <result column="infoid" property="infoid" />
-        <result column="reservationtime" property="reservationtime" />
-        <result column="creatime" property="creatime" />
-        <result column="state" property="state" />
+        <id column="id" property="id"/>
+        <result column="userid" property="userid"/>
+        <result column="infoid" property="infoid"/>
+        <result column="reservationtime" property="reservationtime"/>
+        <result column="creatime" property="creatime"/>
+        <result column="state" property="state"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, userid, infoid, reservationtime, creatime, state
     </sql>
+
+    <select id="getYYinfo" resultType="com.isoft.pojo.vo.ReservationVo">
+        SELECT r.creatime reservationtime,
+        r.iscomment iscomment, i.name name, i.id id,
+        c.categoryname categoryname FROM reservation r
+        LEFT JOIN info i on i.id = r.infoid
+        LEFT JOIN category c on c.id = i.categoryid
+        WHERE userid = #{userid}
+        order by r.creatime desc
+    </select>
 
 </mapper>

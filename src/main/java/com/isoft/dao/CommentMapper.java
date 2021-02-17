@@ -8,19 +8,12 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-/**
- * <p>
- * Mapper 接口
- * </p>
- *
- * @author ht
- * @since 2020-11-26
- */
+
 public interface CommentMapper extends BaseMapper<Comment> {
 
 
     Page<CommentVo> getCommentList(@Param("page") Page<CommentVo> page,
-								   @Param("detailId") Integer detailId);
+								   @Param("infoid") Integer infoid);
 
     @Update("update comment set state = #{state} where id = #{id}")
     int updCommentState(Integer id, Integer state);

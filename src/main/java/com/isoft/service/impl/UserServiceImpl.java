@@ -8,14 +8,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- * <p>
- * 服务实现类
- * </p>
- *
- * @author ht
- * @since 2020-11-26
- */
+
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
@@ -43,5 +36,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public int countUser2() {
         return userMapper.countUser2();
+    }
+
+    @Override
+    public boolean updateByIds(User user) {
+        return userMapper.updateByIds(user.getPhone(), user.getId()) > 0;
     }
 }

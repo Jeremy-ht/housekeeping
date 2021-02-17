@@ -16,14 +16,7 @@ import org.springframework.util.StringUtils;
 import java.time.LocalDate;
 import java.util.List;
 
-/**
- * <p>
- * 服务实现类
- * </p>
- *
- * @author ht
- * @since 2020-11-26
- */
+
 @Service
 @Slf4j
 public class DetailServiceImpl extends ServiceImpl<DetailMapper, Detail> implements DetailService {

@@ -84,7 +84,7 @@ public class InfoController {
 	 */
 	@GetMapping("/getInfoList/{id}")
 	public ResponseData getInfoList(@RequestParam(name = "pagenum", defaultValue = "1", required = false) long pagenum,
-									   @RequestParam(name = "pagesize", defaultValue = "10", required = false) long pagesize,
+									   @RequestParam(name = "pagesize", defaultValue = "100", required = false) long pagesize,
 									   @PathVariable("id") Integer id) {
 
 		Page<InfoVo> page = infoService.getInfoList(pagenum, pagesize, id);

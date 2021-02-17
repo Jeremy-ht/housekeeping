@@ -11,14 +11,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import org.springframework.format.annotation.DateTimeFormat;
 
-/**
- * <p>
- * 
- * </p>
- *
- * @author ht
- * @since 2020-11-26
- */
+
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)

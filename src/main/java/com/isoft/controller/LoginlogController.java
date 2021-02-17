@@ -15,11 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- *
- * @author ht
- * @since 2020-11-26
- */
 @RestController
 @RequestMapping("/log")
 public class LoginlogController {

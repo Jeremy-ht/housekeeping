@@ -4,14 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.isoft.pojo.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
-/**
- * <p>
- *  服务类
- * </p>
- *
- * @author ht
- * @since 2020-11-26
- */
+
 public interface UserService extends IService<User> {
 
     Page<User> getCateList(long pagenum, long pagesize);
@@ -21,4 +14,6 @@ public interface UserService extends IService<User> {
     int countUser();
 
     int countUser2();
+
+    boolean updateByIds(User user);
 }

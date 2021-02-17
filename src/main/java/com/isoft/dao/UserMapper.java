@@ -5,15 +5,9 @@ import com.isoft.pojo.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
-/**
- * <p>
- * Mapper 接口
- * </p>
- *
- * @author ht
- * @since 2020-11-26
- */
+
 public interface UserMapper extends BaseMapper<User> {
 
     Page<User> selCateList(Page<User> page);
@@ -26,4 +20,8 @@ public interface UserMapper extends BaseMapper<User> {
 
     @Select("SELECT count(1) FROM user")
     int countUser2();
+
+    @Update("UPDATE user SET phone=#{phone} WHERE id=#{id} AND state=1")
+    int updateByIds(@Param("phone") String phone,
+                    @Param("id") Integer id);
 }

@@ -11,14 +11,7 @@ import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
-/**
- * <p>
- * Mapper 接口
- * </p>
- *
- * @author ht
- * @since 2020-11-26
- */
+
 public interface DetailMapper extends BaseMapper<Detail> {
 
     Page<DetailVo> getSceneryList(@Param("page") Page<DetailVo> page,

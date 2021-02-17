@@ -6,14 +6,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.isoft.pojo.vo.LoginlogVo;
 import org.apache.ibatis.annotations.Select;
 
-/**
- * <p>
- * Mapper 接口
- * </p>
- *
- * @author ht
- * @since 2020-11-26
- */
+
 public interface LoginlogMapper extends BaseMapper<Loginlog> {
 
     @Select("select l.*, a.username, a.name from loginlog l " +

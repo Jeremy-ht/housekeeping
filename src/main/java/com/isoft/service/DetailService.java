@@ -9,14 +9,7 @@ import com.isoft.utils.ResponseData;
 
 import java.util.List;
 
-/**
- * <p>
- *  服务类
- * </p>
- *
- * @author ht
- * @since 2020-11-26
- */
+
 public interface DetailService extends IService<Detail> {
 
     Page<DetailVo> getSceneryList(long pagenum, long pagesize, Integer categoryId,Integer draft,Integer creator);
