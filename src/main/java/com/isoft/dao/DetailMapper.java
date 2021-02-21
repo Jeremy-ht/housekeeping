@@ -32,4 +32,8 @@ public interface DetailMapper extends BaseMapper<Detail> {
     List<EchartsVo> getEchartsCategory();
 
     List<EchartsVo> getEchartsUser(String date);
+
+    List<EchartsVo> getEchartsYY(String valueOf);
+
+    List<EchartsVo> getEchartsInfo(String valueOf);
 }

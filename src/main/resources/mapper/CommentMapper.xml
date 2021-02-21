@@ -23,18 +23,22 @@
         SELECT
         c.*,
         u.uname uname,
-        u.image image
+        u.image uimage,
+        i.name name,
+        i.image image,
+        ca.categoryname
         FROM
         COMMENT c
         LEFT JOIN USER u ON u.id = c.userid
         LEFT JOIN info i ON i.id = c.infoid
+        LEFT JOIN category ca ON ca.id = i.categoryid
         <where>
             c.state = 1
             <if test="infoid != 0">
                 and c.infoid = #{infoid}
             </if>
         </where>
-        GROUP BY
+        order BY
         c.creatime DESC
     </select>
 

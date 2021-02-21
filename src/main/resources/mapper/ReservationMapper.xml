@@ -27,4 +27,25 @@
         order by r.creatime desc
     </select>
 
+
+    <select id="getReservationList" resultType="com.isoft.pojo.vo.ReservationVo2">
+       SELECT
+            i.NAME name,
+            i.phone phone,
+            i.image image,
+            u.uname uname,
+            u.phone uphone,
+            r.creatime creatime,
+            r.iscomment iscomment,
+            r.id id
+        FROM
+            reservation r
+            LEFT JOIN USER u ON u.id = r.userid
+            LEFT JOIN info i ON i.id = r.infoid
+        WHERE
+            r.state = 1
+        ORDER BY
+            r.creatime desc
+    </select>
+
 </mapper>

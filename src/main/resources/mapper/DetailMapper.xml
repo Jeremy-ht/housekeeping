@@ -113,5 +113,43 @@
             t.monthNo
     </select>
 
+    <select id="getEchartsYY" resultType="com.isoft.pojo.vo.EchartsVo">
+        SELECT
+            t.monthNo AS name,
+            COUNT( 1 ) AS value
+        FROM
+            (
+            SELECT
+                MONTH ( a.creatime ) AS monthNo,
+                YEAR ( a.creatime ) AS myYear,
+                a.id AS id
+            FROM
+                reservation a
+            ) AS t
+        WHERE
+            t.myYear = #{date}
+        GROUP BY
+            t.monthNo
+    </select>
+
+    <select id="getEchartsInfo" resultType="com.isoft.pojo.vo.EchartsVo">
+        SELECT
+            t.monthNo AS name,
+            COUNT( 1 ) AS value
+        FROM
+            (
+            SELECT
+                MONTH ( a.creatime ) AS monthNo,
+                YEAR ( a.creatime ) AS myYear,
+                a.id AS id
+            FROM
+                info a
+            ) AS t
+        WHERE
+            t.myYear = #{date}
+        GROUP BY
+            t.monthNo
+    </select>
+
 
 </mapper>

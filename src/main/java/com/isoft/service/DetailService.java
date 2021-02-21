@@ -25,4 +25,8 @@ public interface DetailService extends IService<Detail> {
     List<EchartsVo> getEchartsCategory();
 
     List<EchartsVo> getEchartsUser();
+
+    List<EchartsVo> getEchartsYY();
+
+    List<EchartsVo> getEchartsInfo();
 }

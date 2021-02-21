@@ -99,7 +99,7 @@ public class AdminController {
         if (StringUtils.isBlank(admin.getUsername())) {
             return ResponseData.error().message("用户名不能为空");
         }
-        admin.setIcon("https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png");
+        admin.setIcon("https://sf3-ttcdn-tos.pstatp.com/img/user-avatar/0df415c26ce5767088ea12245993360a~300x300.image");
         String salt = CommonUtil.getRandomSixNum();
         admin.setSalt(salt);
         MD5Code md5Code = new MD5Code();

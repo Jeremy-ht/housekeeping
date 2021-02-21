@@ -2,6 +2,7 @@ package com.isoft.controller;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.isoft.dao.InfoMapper;
 import com.isoft.dao.ReservationMapper;
 import com.isoft.pojo.entity.Comment;
 import com.isoft.pojo.vo.CommentVo;
@@ -23,9 +24,10 @@ public class CommentController {
 
     @Autowired
     private CommentService commentService;
-
     @Autowired
     private ReservationMapper reservationMapper;
+    @Autowired
+    private InfoMapper infoMapper;
 
     /**
      * 添加评论
@@ -38,8 +40,8 @@ public class CommentController {
         }
         addCommentInfo.setCommentary(addCommentInfo.getCommentary().trim());
         // 更新评论状态
-        int a = reservationMapper.upd(addCommentInfo.getUserid(), addCommentInfo.getInfoid());
-
+        reservationMapper.upd(addCommentInfo.getUserid(), addCommentInfo.getInfoid());
+        infoMapper.updateState0(addCommentInfo.getInfoid());
         return commentService.save(addCommentInfo) ? ResponseData.success().message("评论成功！")
                 : ResponseData.error().message("评论失败!");
     }

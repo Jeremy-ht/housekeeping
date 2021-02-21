@@ -63,4 +63,34 @@
         ORDER BY
         i.creatime DESC
     </select>
+
+    <select id="getTopList" resultType="com.isoft.pojo.vo.InfoVo">
+     SELECT
+        i.*,
+        c.categoryname categoryname,
+        a.username username
+    FROM
+        info i
+        LEFT JOIN category c ON i.categoryid = c.id
+        LEFT JOIN admin a ON a.id = i.creator
+    WHERE
+        i.state = 1
+        AND i.id IN ( SELECT infoid FROM COMMENT GROUP BY infoid ORDER BY count( infoid ) DESC )
+    LIMIT 0,4
+    </select>
+
+    <select id="getTopListBy" resultType="com.isoft.pojo.vo.InfoVo">
+        SELECT
+        i.*,
+        c.categoryname categoryname,
+        a.username username
+        FROM
+        info i
+        LEFT JOIN category c ON i.categoryid = c.id
+        LEFT JOIN admin a ON a.id = i.creator
+        WHERE i.state = 1
+        ORDER BY
+        i.creatime asc
+        limit #{i}
+    </select>
 </mapper>

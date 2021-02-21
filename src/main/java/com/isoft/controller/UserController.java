@@ -42,7 +42,7 @@ public class UserController {
         if (org.apache.commons.lang3.StringUtils.isBlank(user.getPhone())) {
             return ResponseData.error().message("手机号不能为空");
         }
-        user.setImage("https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png");
+        user.setImage("https://sf3-ttcdn-tos.pstatp.com/img/mosaic-legacy/3795/3033762272~300x300.image");
         String salt = CommonUtil.getRandomSixNum();
         user.setSalt(salt);
         MD5Code md5Code = new MD5Code();
