@@ -33,9 +33,11 @@
         LEFT JOIN info i ON i.id = c.infoid
         LEFT JOIN category ca ON ca.id = i.categoryid
         <where>
-            c.state = 1
+            <if test="infoid == 0">
+                and  c.state in(1,2)
+            </if>
             <if test="infoid != 0">
-                and c.infoid = #{infoid}
+                and  c.state = 1 and c.infoid = #{infoid}
             </if>
         </where>
         order BY
