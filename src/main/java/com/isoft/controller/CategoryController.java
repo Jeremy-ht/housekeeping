@@ -15,14 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * <p>
- * 前端控制器
- * </p>
- *
- * @author ht
- * @since 2020-11-26
- */
 @RestController
 @RequestMapping("/category")
 @Api("分类")

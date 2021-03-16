@@ -26,7 +26,7 @@
         SELECT
            id, uname, loginway, sex, image, phone, email, creatime,state
         FROM
-            scenery_user
+            user
         WHERE
             state = 1 or state = 2
         ORDER BY
@@ -34,7 +34,7 @@
     </select>
 
     <update id="updAbleUserById">
-        update scenery_user set state = #{state} where id = #{id}
+        update user set state = #{state} where id = #{id}
     </update>
 
 </mapper>

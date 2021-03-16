@@ -35,8 +35,8 @@
             a.sex,
             sa.username AS creatorName
         FROM
-            scenery_admin a
-            INNER JOIN scenery_admin sa ON a.creator = sa.id
+            admin a
+            INNER JOIN admin sa ON a.creator = sa.id
         WHERE
             a.state = 1
         ORDER BY

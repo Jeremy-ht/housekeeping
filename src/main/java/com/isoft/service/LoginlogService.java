@@ -5,14 +5,7 @@ import com.isoft.pojo.entity.Loginlog;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.isoft.pojo.vo.LoginlogVo;
 
-/**
- * <p>
- *  服务类
- * </p>
- *
- * @author ht
- * @since 2020-11-26
- */
+
 public interface LoginlogService extends IService<Loginlog> {
 
     Page<LoginlogVo> getLogList(long pagenum, long pagesize);

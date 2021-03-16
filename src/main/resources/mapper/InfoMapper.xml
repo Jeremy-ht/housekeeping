@@ -20,6 +20,9 @@
         <result column="creatime" property="creatime" />
         <result column="state" property="state" />
         <result column="creator" property="creator" />
+        <result column="image" property="image" />
+        <result column="categoryid" property="categoryid" />
+        <result column="phone" property="phone" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
@@ -33,13 +36,61 @@
             c.categoryname,
             a.username
         FROM
-            scenery_detail d
-            LEFT JOIN scenery_category c ON d.categoryid = c.categoryid
-            LEFT JOIN scenery_admin a ON a.id = d.creator
+            detail d
+            LEFT JOIN category c ON d.categoryid = c.categoryid
+            LEFT JOIN admin a ON a.id = d.creator
         WHERE
             d.id = #{id}
             and d.state = 1
             and d.draft = 1
     </select>
 
+    <select id="getInfoList" resultType="com.isoft.pojo.vo.InfoVo">
+        SELECT
+        i.*,
+        c.categoryname categoryname,
+        a.username username
+        FROM
+        info i
+        LEFT JOIN category c ON i.categoryid = c.id
+        LEFT JOIN admin a ON a.id = i.creator
+        <where>
+            <if test="id != 0">
+                and i.categoryid = #{id}
+            </if>
+            and i.state = 1
+        </where>
+        ORDER BY
+        i.creatime DESC
+    </select>
+
+    <select id="getTopList" resultType="com.isoft.pojo.vo.InfoVo">
+     SELECT
+        i.*,
+        c.categoryname categoryname,
+        a.username username
+    FROM
+        info i
+        LEFT JOIN category c ON i.categoryid = c.id
+        LEFT JOIN admin a ON a.id = i.creator
+    WHERE
+        i.state = 1
+        AND i.id IN ( SELECT infoid FROM COMMENT GROUP BY infoid ORDER BY count( infoid ) DESC )
+    LIMIT 0,4
+    </select>
+
+    <select id="getTopListBy" resultType="com.isoft.pojo.vo.InfoVo">
+        SELECT
+        i.*,
+        c.categoryname categoryname,
+        a.username username
+        FROM
+        info i
+        LEFT JOIN category c ON i.categoryid = c.id
+        LEFT JOIN admin a ON a.id = i.creator
+        WHERE i.state = 1
+        ORDER BY
+        i.creatime asc
+        limit #{i}
+    </select>
 </mapper>

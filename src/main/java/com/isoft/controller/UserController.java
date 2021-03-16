@@ -18,14 +18,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * <p>
- * 前端控制器
- * </p>
- *
- * @author ht
- * @since 2020-11-26
- */
 @RestController
 @RequestMapping("/user")
 @Api(tags = "用户管理")
@@ -33,6 +25,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+
 
     /**
      * 注册（用户名密码）
@@ -48,7 +42,7 @@ public class UserController {
         if (org.apache.commons.lang3.StringUtils.isBlank(user.getPhone())) {
             return ResponseData.error().message("手机号不能为空");
         }
-        user.setImage("https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png");
+        user.setImage("https://sf3-ttcdn-tos.pstatp.com/img/mosaic-legacy/3795/3033762272~300x300.image");
         String salt = CommonUtil.getRandomSixNum();
         user.setSalt(salt);
         MD5Code md5Code = new MD5Code();
@@ -104,7 +98,7 @@ public class UserController {
         if (StringUtils.isEmpty(user)) {
             return ResponseData.error().message("请求参数不能为空!");
         }
-        return userService.updateById(user) ? ResponseData.success().message("修改信息成功！").data("data", user)
+        return userService.updateByIds(user) ? ResponseData.success().message("修改信息成功！").data("data", user)
                 : ResponseData.error().message("修改信息失败!");
     }
 
@@ -145,6 +139,15 @@ public class UserController {
         }
         return ResponseData.error().message("获取用户列表失败！");
     }
+
+
+    @GetMapping("/getUserListByCategory/{id}")
+    public ResponseData getUserListByCategory(@PathVariable("id") Integer id) {
+//        userService.getUserListByCategory(id);
+
+        return ResponseData.error().message("获取用户列表失败！");
+    }
+
 
 
 }

@@ -4,7 +4,7 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.isoft.pojo.entity.Category">
-        <id column="categoryid" property="categoryid"/>
+        <id column="id" property="id"/>
         <result column="categoryname" property="categoryname"/>
         <result column="state" property="state"/>
         <result column="creatime" property="creatime"/>
@@ -13,7 +13,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        categoryid, categoryname, state, creatime, creator
+        id, categoryname, state, creatime, creator
     </sql>
 
 
@@ -22,8 +22,8 @@
         c.*,
         a.username
     FROM
-        scenery_category c
-        LEFT JOIN scenery_admin a ON a.id = c.creator
+        category c
+        LEFT JOIN admin a ON a.id = c.creator
     WHERE
         c.state = 1
     GROUP BY

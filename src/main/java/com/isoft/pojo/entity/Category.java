@@ -11,24 +11,17 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import org.springframework.format.annotation.DateTimeFormat;
 
-/**
- * <p>
- * 
- * </p>
- *
- * @author ht
- * @since 2020-11-26
- */
+
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("scenery_category")
+@TableName("category")
 public class Category implements Serializable {
 
     private static final long serialVersionUID=1L;
 
-    @TableId(value = "categoryid", type = IdType.AUTO)
-    private Integer categoryid;
+    @TableId(value = "id", type = IdType.AUTO)
+    private Integer id;
 
     private String categoryname;
 

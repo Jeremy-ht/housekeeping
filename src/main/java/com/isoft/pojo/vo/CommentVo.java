@@ -27,9 +27,6 @@ public class CommentVo implements Serializable {
      * 用户id
      */
     private Integer userid;
-
-    private Integer detailid;
-
     /**
      * 评论正文
      */
@@ -51,8 +48,9 @@ public class CommentVo implements Serializable {
     private LocalDateTime creatime;
 
     private String uname;
+    private String uimage;
     private String categoryname;
-    private String title;
+    private String name;
     private String image;
 
 

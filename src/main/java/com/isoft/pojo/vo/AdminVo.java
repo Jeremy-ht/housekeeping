@@ -10,14 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-/**
- * <p>
- *
- * </p>
- *
- * @author ht
- * @since 2020-11-26
- */
+
 @Data
 public class AdminVo implements Serializable {
 

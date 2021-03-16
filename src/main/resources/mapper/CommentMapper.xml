@@ -23,21 +23,24 @@
         SELECT
         c.*,
         u.uname uname,
-        u.image image,
-        ca.categoryname categoryname,
-        d.title title
+        u.image uimage,
+        i.name name,
+        i.image image,
+        ca.categoryname
         FROM
-        scenery_comment c
-        LEFT JOIN scenery_user u ON u.id = c.userid
-        LEFT JOIN scenery_category ca ON ca.categoryid = c.categoryid
-        LEFT JOIN scenery_detail d on d.id = c.detailid
+        COMMENT c
+        LEFT JOIN USER u ON u.id = c.userid
+        LEFT JOIN info i ON i.id = c.infoid
+        LEFT JOIN category ca ON ca.id = i.categoryid
         <where>
-            c.state = 1
-            <if test="detailId != 0">
-                and c.detailid = #{detailId}
+            <if test="infoid == 0">
+                and  c.state in(1,2)
+            </if>
+            <if test="infoid != 0">
+                and  c.state = 1 and c.infoid = #{infoid}
             </if>
         </where>
-        GROUP BY
+        order BY
         c.creatime DESC
     </select>
 

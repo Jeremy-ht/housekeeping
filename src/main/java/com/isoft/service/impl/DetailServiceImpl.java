@@ -16,14 +16,7 @@ import org.springframework.util.StringUtils;
 import java.time.LocalDate;
 import java.util.List;
 
-/**
- * <p>
- * 服务实现类
- * </p>
- *
- * @author ht
- * @since 2020-11-26
- */
+
 @Service
 @Slf4j
 public class DetailServiceImpl extends ServiceImpl<DetailMapper, Detail> implements DetailService {
@@ -43,8 +36,6 @@ public class DetailServiceImpl extends ServiceImpl<DetailMapper, Detail> impleme
             log.error("DetailServiceImpl：错误" + e);
             return null;
         }
-
-
     }
 
     @Override
@@ -82,5 +73,17 @@ public class DetailServiceImpl extends ServiceImpl<DetailMapper, Detail> impleme
     public List<EchartsVo> getEchartsUser() {
         int year = LocalDate.now().getYear();
         return detailMapper.getEchartsUser(String.valueOf(year));
+    }
+
+    @Override
+    public List<EchartsVo> getEchartsYY() {
+        int year = LocalDate.now().getYear();
+        return detailMapper.getEchartsYY(String.valueOf(year));
+    }
+
+    @Override
+    public List<EchartsVo> getEchartsInfo() {
+        int year = LocalDate.now().getYear();
+        return detailMapper.getEchartsInfo(String.valueOf(year));
     }
 }

@@ -2,9 +2,12 @@ package com.isoft.controller;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.isoft.dao.InfoMapper;
+import com.isoft.dao.ReservationMapper;
 import com.isoft.pojo.entity.Comment;
 import com.isoft.pojo.vo.CommentVo;
 import com.isoft.service.CommentService;
+import com.isoft.service.ReservationService;
 import com.isoft.utils.ResponseData;
 import io.swagger.annotations.Api;
 import org.apache.commons.lang3.StringUtils;
@@ -14,14 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * <p>
- * 前端控制器
- * </p>
- *
- * @author ht
- * @since 2020-11-26
- */
 @RestController
 @RequestMapping("/comment")
 @Api(tags = "评论管理")
@@ -29,6 +24,10 @@ public class CommentController {
 
     @Autowired
     private CommentService commentService;
+    @Autowired
+    private ReservationMapper reservationMapper;
+    @Autowired
+    private InfoMapper infoMapper;
 
     /**
      * 添加评论
@@ -39,6 +38,10 @@ public class CommentController {
         if (StringUtils.isBlank(addCommentInfo.getCommentary())) {
             return ResponseData.error().message("评论内容不能为空！");
         }
+        addCommentInfo.setCommentary(addCommentInfo.getCommentary().trim());
+        // 更新评论状态
+        reservationMapper.upd(addCommentInfo.getUserid(), addCommentInfo.getInfoid());
+        infoMapper.updateState0(addCommentInfo.getInfoid());
         return commentService.save(addCommentInfo) ? ResponseData.success().message("评论成功！")
                 : ResponseData.error().message("评论失败!");
     }
@@ -50,8 +53,8 @@ public class CommentController {
      */
     @GetMapping("getCommentList/{pagenum}/{pagesize}/{detailId}")
     public ResponseData getCommentList(@PathVariable("pagenum") long pagenum,
-                                           @PathVariable("pagesize") long pagesize,
-                                           @PathVariable("detailId") Integer detailId) {
+                                       @PathVariable("pagesize") long pagesize,
+                                       @PathVariable("detailId") Integer detailId) {
         Page<CommentVo> page = new Page<>(pagenum, pagesize);
         page = commentService.getCommentList(page, detailId);
         if (page.getTotal() == 0) {

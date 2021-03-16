@@ -18,7 +18,7 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2)
                 .pathMapping("/")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.isoft.scenery.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.isoft.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(new ApiInfoBuilder()

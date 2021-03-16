@@ -19,7 +19,7 @@ public class CommonAutoGenerator {
         config.setActiveRecord(false)  //是否支持AR模式
 //                .setAuthor("ht")  //作者
                 .setIdType(IdType.AUTO)  //主键策略
-                .setOutputDir("D:\\IT\\Java\\bs\\housekeeping\\src\\main\\java")//生成路径
+                .setOutputDir("D:\\IT")//生成路径
                 .setFileOverride(false)  //文件是否覆盖
                 .setServiceName("%sService")  //service名称
                 .setBaseColumnList(true)  //xml生成column
@@ -30,7 +30,7 @@ public class CommonAutoGenerator {
         DataSourceConfig dsConfig = new DataSourceConfig();
         dsConfig.setDbType(DbType.MYSQL)
                 .setDriverName("com.mysql.cj.jdbc.Driver")
-                .setUrl("jdbc:mysql://cn1.utools.club:40363/housekeeping?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=Asia/Shanghai")
+                .setUrl("jdbc:mysql://localhost:3306/housekeeping?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=Asia/Shanghai")
                 .setUsername("root")
                 .setPassword("root");
 
@@ -38,8 +38,8 @@ public class CommonAutoGenerator {
         StrategyConfig stConfig = new StrategyConfig();
         stConfig.setCapitalMode(true)//全局大写命名
                 .setNaming(NamingStrategy.underline_to_camel)   //数据库表映射到实体的命名策略
-                .setInclude("info", "reservation", "skills")  //====需要生成的表====
-//                .setTablePrefix("scenery_")  //表前缀
+                .setInclude("skill")  //====需要生成的表====
+//                .setTablePrefix("")  //表前缀
                 .setEntityLombokModel(true);  //lombok
 
         //4.包名策略
