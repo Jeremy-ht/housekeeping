@@ -30,7 +30,7 @@ public class ServletUtils {
 	public static final String HTML_TYPE = "text/html";
 	public static final String JS_TYPE = "text/javascript";
 	public static final String JSON_TYPE = "application/json";
-	public static final String XML_TYPE = "text/xml";
+	public static final String XML_TYPE = "text/xml ";
 	public static final String TEXT_TYPE = "text/plain";
  
 	// -- Header 定义 --//
