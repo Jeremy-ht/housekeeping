@@ -75,7 +75,7 @@
         LEFT JOIN admin a ON a.id = i.creator
     WHERE
         i.state = 1
-        AND i.id IN ( SELECT infoid FROM COMMENT GROUP BY infoid ORDER BY count( infoid ) DESC )
+        AND i.id IN ( SELECT infoid FROM comment GROUP BY infoid ORDER BY count( infoid ) DESC )
     LIMIT 0,4
     </select>
 

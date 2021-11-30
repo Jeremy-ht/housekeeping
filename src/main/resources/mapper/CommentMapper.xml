@@ -28,8 +28,8 @@
         i.image image,
         ca.categoryname
         FROM
-        COMMENT c
-        LEFT JOIN USER u ON u.id = c.userid
+        comment c
+        LEFT JOIN user u ON u.id = c.userid
         LEFT JOIN info i ON i.id = c.infoid
         LEFT JOIN category ca ON ca.id = i.categoryid
         <where>
