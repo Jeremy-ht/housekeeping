@@ -3,19 +3,19 @@
 <mapper namespace="com.isoft.dao.UserMapper">
 
     <!-- 通用查询映射结果 -->
-<!--    <resultMap id="BaseResultMap" type="com.isoft.pojo.entity.User">-->
-<!--        <id column="id" property="id"/>-->
-<!--        <result column="uname" property="uname"/>-->
-<!--        <result column="salt" property="salt"/>-->
-<!--        <result column="pwd" property="pwd"/>-->
-<!--        <result column="loginway" property="loginway"/>-->
-<!--        <result column="state" property="state"/>-->
+    <resultMap id="BaseResultMap" type="com.isoft.pojo.entity.User">
+        <id column="id" property="id"/>
+        <result column="uname" property="uname"/>
+        <result column="salt" property="salt"/>
+        <result column="pwd" property="pwd"/>
+        <result column="loginway" property="loginway"/>
+        <result column="state" property="state"/>
 <!--        <result column="sex" property="sex"/>-->
 <!--        <result column="image" property="image"/>-->
 <!--        <result column="phone" property="phone"/>-->
 <!--        <result column="email" property="email"/>-->
 <!--        <result column="creatime" property="creatime"/>-->
-<!--    </resultMap>-->
+    </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
